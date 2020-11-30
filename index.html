@@ -1,84 +1,188 @@
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
 
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hydroponic Garden</title>
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/15181efa86.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+  </head>
 
-<title>Hydroponic Garden</title>
-<link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-</head>
-<style>
+  <body>
+    <section class="container">
+      <div class="columns is-multiline">
+        <div class="column is-8 is-offset-2 register">
+          <div class="columns">
+            <div class="column left">
+              <h1 class="title is-1">Hydroponic <span class="title is-2">Garden</span></h1>
+              <div class="content">
+                <p class="has-text-grey-darker">Trường <b>Đại học Khoa Học Tự Nhiên</b>, <b>Nhóm 8 - KHMT</b>, môn Vật lý đại cương 2, năm học 2020. </p>
+                <p class="has-text-grey-darker">Đồ án <u>Hydroponic Garden</u> được làm bởi :</p>
+                <p class="has-text-grey-darker"><b>Phan Quang Đại</b> - <u>18127073</u></p>
+                <p class="has-text-grey-darker"><b>Trần Quốc Huy</b> - <u>18127111</u></p>
+                <p class="has-text-grey-darker"><b>Võ Văn Quốc Huy</b> - <u>18127113</u></p>
+              </div>
+              <h2 class="subtitle colored is-5">
+                <a href="#" 
+                    target="_blank" class="colored underline">
+                    <i class="fas fa-download colored"></i>Đăng kí mua sản phẩm và tạo tài khoản. </h2>
+                </a>
+            </div>
+            <div class="column right has-text-centered">
+              <h1 class="title is-4">Đăng nhập</h1>
+              <p class="description is-size-6">. Nhập tên đăng nhập và mật khẩu.</p>
 
-	.desBoard {
-		margin-top: 20px;
-		border-radius: 10px;
-		border: 3px solid rgba(24, 100, 14, 0.2);
-		background-color: rgba(95, 235, 77, 0.1);
-		width: 300px;
-		height: 480px;
-	}
-	.valueinput{
-		width: 100px;
-		height: 20px;
-		margin-top: 20px;
-		border-radius: 10px;
-		border: 3px solid rgba(255, 255, 255, 0.6);
-		color: #ff0000;
-		font-size: 17px;
-		font-weight: bold;
-		padding: 10px;
-	}
-			
-	.valueinput:focus {
-		outline: none;   
-	}
-	.modeButton {
-		border-radius: 10px;
-		border: 3px solid rgba(255, 255, 255, .6);
-		width: 250px;
-		height: 50px;
-		padding: 0px;
-		margin-top: 20px;
-		color: rgba(000, 000, 000, .6);
-		font-size: 20px;
-		transition-duration: 0.1s;
-		cursor: pointer;
-	}		
+              <form action="#" onsubmit="dashLogin()" method="post">
+                <div class="field">
+                  <div class="control">
+                    <input class="input is-medium" id="username" name="username" type="text" placeholder="Tên tài khoản" required>
+                  </div>
+                </div>
+                <div class="field">
+                  <div class="control">
+                    <input class="input is-medium" id="password" name="password" type="password" placeholder="Mật khẩu" required>
+                  </div>
+                </div>
+                <button class="button is-block is-primary is-fullwidth is-medium">Đăng nhập</button>
+                <br/>
+                <small>Nếu có vấn đề đăng nhập xin hãy liên hệ nhóm.</small>
+                <br />
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="column is-8 is-offset-2">
+          <br>
+          <nav class="level">
+            <div class="level-left">
+                <div class="level-item">                        
+                    <a href="mailto:hydroponic.garden.khmt@gmail.com" style="color: var(--textWhite)" class="underline">
+                    <span class="icon" style="color: var(--textWhite)">
+                            <i class="fas fa-envelope" style="color: var(--textWhite)"></i>
+                    </span>
+                    hydroponic.garden.khmt@gmail.com
+                    </a>
 
-	.modeButton:focus {
-		outline: none;   
-	}
-			
-	.modeButton:hover {
-		border: 3px solid rgba(255, 000, 000, 1);
-		color: red;
-		transition-duration: 0.2s;
-	}	
+                </div>
+            </div>
+            <div class="level-right">
+              <small class="level-item" style="color: var(--textWhite)">
+                Nhóm 8 &copy; 2020.
+              </small>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </section>
+    <script src="./js/tmp_login.js"></script>
+  </body>
+  <style>
+    :root {
+      --brandColor: hsl(166, 67%, 51%);
+      --background: rgb(247, 247, 247);
+      --textDark: hsla(0, 0%, 0%, 0.66);
+      --textLight: hsla(0, 0%, 0%, 0.33);
+      --textWhite: #fff;
+    }
 
-	.modeButton:active {
-		border: 3px solid rgba(255, 255, 255, .2);
-	}
-	
-			
-</style>
+    body {
+      background: url('bg.jpeg') center center;
+      background-size: cover;
+      min-height: 100vh;
+      color: var(--textDark);
+      overflow: hidden;
+    }
 
-<body style="background-color:#63009c; background-size:cover onload="loadClasses()">
+    @media screen and (max-width: 768px) {
+        body {
+            background: #FFF;
+        }
+    }
 
+    html {
+        height: 100%;
+    }
 
-<div id="login" align="center" style="padding-top:22px;padding-bottom:22px;">	
-	<div class="desBoard" align="center" style="width:300px;height:400px">
-		<b><p align="center" style="margin-bottom:10px;margin-top:35px;font-size:30px;color:#ffffff">Đăng nhập</p></b></br>
-		
-		<p id="loginStatus" align="center" style="margin:0px;font-size:15px;color:#ff1f1f;height:30px"></p>
-		
-		<form align="center" style="color:#ffffff;font-size:17px;width:250px" onsubmit="dashLogin(); return false;">
-			<b><p align="left" style="margin:5px;padding-left:5px">Tên đăng nhập:</p></b>
-			<input id="username" class="valueinput" align="left" type="text" style="width:200px;margin-top:0px;font-size:15px;margin-bottom:10px">
-			<b><p align="left" style="margin:5px;padding-left:5px">Mật khẩu:</p></b>
-			<input id="password" class="valueinput" align="left" type="password" style="width:200px;margin-top:0px;font-size:15px;margin-bottom:20px">
-			<input name="login" class="modeButton" type="submit" value="Đăng nhập" style="width:150px;font-weight:bold">
-		</form>
-<script src="./js/tmp_login.js"></script>
-</body>
+    body {
+        min-height: 100%;
+    }
+
+    .underline:hover {
+        text-decoration: underline;
+    }
+
+    .field:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+
+    .register {
+      margin-top: 10rem;
+      background: white;
+      border-radius: 10px;
+    }
+
+    .left,
+    .right {
+      padding: 4.5rem;
+    }
+
+    .left {
+      border-right: 5px solid var(--background);
+    }
+
+    .left .title {
+      font-weight: 800;
+      letter-spacing: -2px;
+    }
+
+    .left .colored {
+      color: var(--brandColor);
+      font-weight: 500;
+      margin-top: 1rem !important;
+      letter-spacing: -1px;
+    }
+
+    .left p {
+      color: var(--textLight);
+      font-size: 1.15rem;
+    }
+
+    .right .title {
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .right .description {
+      margin-top: 1rem;
+      margin-bottom: 1rem !important;
+      color: var(--textLight);
+      font-size: 1.15rem;
+    }
+
+    .right small {
+      color: var(--textLight);
+    }
+
+    input {
+      font-size: 1rem;
+    }
+
+    input:focus {
+      border-color: var(--brandColor) !important;
+      box-shadow: 0 0 0 1px var(--brandColor) !important;
+    }
+
+    .fab,
+    .fas {
+      color: var(--textLight);
+      margin-right: 1rem;
+    }
+
+  </style>
+
 </html>
