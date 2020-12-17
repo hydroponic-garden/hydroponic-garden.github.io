@@ -27,7 +27,6 @@ onRegister = function(){
 	if(document.getElementById("registerPassword").value == document.getElementById("repeatPassword").value){
 		var email = document.getElementById("registerEmail").value;
 		var password = document.getElementById("registerPassword").value;
-		document.getElementById("loginLoader").style.display = 'block';
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
 			document.getElementById('registerStatus').innerHTML = error.message;
 			console.log(error);
