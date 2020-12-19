@@ -40,7 +40,8 @@
               <p class="description is-size-6">Nhập tên tài khoản và mật khẩu.</p>
 			  <p id="registerStatus" style="color:red; text-align:center"></p>
 
-              <form action="#" onsubmit="onRegister()" method="post">
+              <!-- <form action="#" onsubmit="onRegister()" method="post"> -->
+			  <form onsubmit="onRegister(); return false;">
                 <div class="field">
                   <div class="control">
                     <input class="input is-medium" id="registerEmail" name="username" type="text" placeholder="Tên tài khoản" required>
