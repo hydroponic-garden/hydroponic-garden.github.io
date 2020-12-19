@@ -31,12 +31,13 @@ onRegister = function(){
 			if(error.code){
 				isSuccessful = false;
 				document.getElementById('registerStatus').innerHTML = error.message;
+				document.getElementById('registerOK').innerHTML = ""
 				console.log(error);
-				document.getElementById("loginLoader").style.display = 'none';
 			}
 			else{
 				isSuccessful = false;
 				document.getElementById('registerStatus').innerHTML = 'Wrong confirm password!';
+				document.getElementById('registerOK').innerHTML = ""
 			}
 		});
 	}	
