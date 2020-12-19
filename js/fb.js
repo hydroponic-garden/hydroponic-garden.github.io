@@ -10,7 +10,7 @@ var firebaseConfig = {
   };
 
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
+  // firebase.analytics();
 
   onLogin = function(){
 	var email = document.getElementById("loginEmail").value;
@@ -23,18 +23,28 @@ var firebaseConfig = {
 	});
 }
 onRegister = function(){
-	
+	var isSuccessful = true;
 	if(document.getElementById("registerPassword").value == document.getElementById("repeatPassword").value){
 		var email = document.getElementById("registerEmail").value;
 		var password = document.getElementById("registerPassword").value;
 		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-			document.getElementById('registerStatus').innerHTML = error.message;
-			console.log(error);
-			document.getElementById("loginLoader").style.display = 'none';
+			if(error.code){
+				isSuccessful = false;
+				document.getElementById('registerStatus').innerHTML = error.message;
+				console.log(error);
+				document.getElementById("loginLoader").style.display = 'none';
+			}
+			else{
+				isSuccessful = false;
+				document.getElementById('registerStatus').innerHTML = 'Wrong confirm password!';
+			}
 		});
-	}else{
-		document.getElementById('registerStatus').innerHTML = 'Wrong confirm password!';
 	}	
+	if(isSuccessful){
+		document.getElementById('registerStatus').innerHTML = "";
+		document.getElementById('registerOK').innerHTML = "Đăng kí thành công";
+	}
+	
 }
 
 onLogout = function(){
