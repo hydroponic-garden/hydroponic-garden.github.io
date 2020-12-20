@@ -55,7 +55,30 @@ onLogout = function(){
 	document.getElementById("devicePanel").style.display = 'none';
 	document.getElementById("loginPanel").style.display = 'block';
 }
-	
+
+turnOff = function(){
+	firebase.auth().onAuthStateChanged(firebaseUser =>{
+	if(firebaseUser){
+		firebase.database().ref().update({
+			device:"0"
+		})
+	}
+		})
+}
+turnOn = function(){
+	firebase.auth().onAuthStateChanged(firebaseUser =>{
+	if(firebaseUser){
+		firebase.database().ref().update({
+			device:"1"
+		})
+	}
+		})
+}
+firebase.database().ref().on('value',function(snapshot){
+			document.getElementById('temp').innerHTML= "1";
+			document.getElementById('humid').innerHTML= "1";
+			document.getElementById('water').innerHTML= snapshot.val().water;
+		});
 firebase.auth().onAuthStateChanged(firebaseUser =>{
 	console.log("TEST,",firebaseUser);
 	if(firebaseUser){
@@ -63,13 +86,28 @@ firebase.auth().onAuthStateChanged(firebaseUser =>{
 		document.getElementById('nameAccount').innerHTML.replace(document.getElementById("nameAccount").placeholder,user.displayName);
 		console.log(user.email);
 		document.getElementById('emailAccount').innerHTML= user.email;
-
+		
 		console.log("12345");
 		console.log("12345");
-		firebase.database().ref().set({
-			email: "1234",
-			tmp : "4566",
-			humid : "123",
+		firebase.database().ref().on('value',function(snapshot){
+			document.getElementById('temp').innerHTML= snapshot.val().temp;
+			document.getElementById('humid').innerHTML= snapshot.val().humid;
+			// document.getElementById('water').innerHTML= snapshot.val().device;
+			if(snapshot.val().water=="1"){
+				document.getElementById('water').innerHTML= "Need Water";
+		}else{
+			document.getElementById('water').innerHTML= "No need Water";
+		}
+		if(snapshot.val().device=="1"){
+			document.getElementById('device').innerHTML="On";
+		}else{
+			document.getElementById('device').innerHTML="Off";
+		}
+		});
+		
+		firebase.database().ref().update({
+			tmp : "NaN",
+			humid : "NaN",
 			water: "1"
 		}, (error) => {
   if (error) {

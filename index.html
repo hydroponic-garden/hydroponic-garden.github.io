@@ -97,27 +97,33 @@
 				  <div class="has-text-centered">
 					<div>
 					  <p class="heading">Temperature</p>
-					  <p class="title" id="temp">3,456</p>
+					  <p class="title" id="temp"></p>
 					</div>
 				  </div>
 				  <div class="has-text-centered">
 					<div>
 					  <p class="heading">Humidity</p>
-					  <p class="title" id="humid">123</p>
+					  <p class="title" id="humid"></p>
 					</div>
 				  </div>
 				  <div class="has-text-centered">
 					<div>
 					  <p class="heading">Water</p>
-					  <p class="title" id="water">1</p>
+					  <p class="title" id="water"></p>
+					</div>
+				  </div>
+				  <div class="has-text-centered">
+					<div>
+					  <p class="heading">Power</p>
+					  <p class="title" id="device"></p>
 					</div>
 				  </div>
 
 				  </nav>
 				  <div class ="panel-block is-flex is-justify-content-center" style="border-top:0.1px solid #0000000f; margin-top:0.5em; justify-content:center">
 					<div class="buttons">
-					  <button class="button is-primary">On</button>
-					  <button class="button is-link">Off</button>
+					  <button class="button is-primary" onclick="turnOn()">On</button>
+					  <button class="button is-link" onclick="turnOff()">Off</button>
 					</div>
 				</div>
 				</div>
