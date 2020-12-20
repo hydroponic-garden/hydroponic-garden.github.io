@@ -12,15 +12,16 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
   // firebase.analytics();
 
-  onLogin = function(){
+onLogin = function(){
 	var email = document.getElementById("loginEmail").value;
 	var password = document.getElementById("loginPassword").value;
-	document.getElementById("loginLoader").style.display = 'block';
+	document.getElementById("loginPanel").style.display = 'block';
 	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
 		document.getElementById('loginStatus').innerHTML = error.message;
 		console.log(error);
-		document.getElementById("loginLoader").style.display = 'none';
+		document.getElementById("loginPanel").style.display = 'block';
 	});
+	console.log("OKKK");
 }
 onRegister = function(){
 	var isSuccessful = true;
@@ -50,4 +51,56 @@ onRegister = function(){
 
 onLogout = function(){
 	firebase.auth().signOut();
+	console.log('Log out');
+	document.getElementById("devicePanel").style.display = 'none';
+	document.getElementById("loginPanel").style.display = 'block';
 }
+class LeadersValueListener : public firebase::database::ValueListener {
+   public:
+    void OnValueChanged(
+        const firebase::database::DataSnapshot& snapshot) override {
+      document.getElementById('tmp').innerHTML= user.email;
+		document.getElementById('humid').innerHTML= user.email;
+		document.getElementById('water').innerHTML= user.email;
+    }
+    void OnCancelled(const firebase::database::Error& error_code,
+                     const char* error_message) override {
+      LogMessage("ERROR: LeadersValueListener canceled: %d: %s", error_code,
+                 error_message);
+    }
+  };
+
+  // Elsewhere in the code...
+
+  LeadersValueListener* listener = new LeadersValueListener();
+  firebase::Future<firebase::database::DataSnapshot> result =
+    dbRef.GetReference("Leaders").AddValueListener(listener);
+	
+firebase.auth().onAuthStateChanged(firebaseUser =>{
+	console.log("TEST,",firebaseUser);
+	if(firebaseUser){
+		var user = firebase.auth().currentUser;
+		document.getElementById('nameAccount').innerHTML.replace(document.getElementById("nameAccount").placeholder,user.displayName);
+		console.log(user.email);
+		document.getElementById('emailAccount').innerHTML= user.email;
+
+		console.log("12345");
+		console.log("12345");
+		firebase.database().ref().set({
+			email: "1234",
+			tmp : "4566",
+			humid : "123",
+			water: "1"
+		}, (error) => {
+  if (error) {
+	  console.log("ERROR",error);
+  } else {
+	console.log("Wrote");
+  }
+		});
+		document.getElementById("devicePanel").style.display = 'block';
+		document.getElementById("loginPanel").style.display = 'none';
+	}else {
+		console.log("Logout!");
+	}
+});
