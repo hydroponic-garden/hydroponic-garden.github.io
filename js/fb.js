@@ -55,26 +55,6 @@ onLogout = function(){
 	document.getElementById("devicePanel").style.display = 'none';
 	document.getElementById("loginPanel").style.display = 'block';
 }
-class LeadersValueListener : public firebase::database::ValueListener {
-   public:
-    void OnValueChanged(
-        const firebase::database::DataSnapshot& snapshot) override {
-      document.getElementById('tmp').innerHTML= user.email;
-		document.getElementById('humid').innerHTML= user.email;
-		document.getElementById('water').innerHTML= user.email;
-    }
-    void OnCancelled(const firebase::database::Error& error_code,
-                     const char* error_message) override {
-      LogMessage("ERROR: LeadersValueListener canceled: %d: %s", error_code,
-                 error_message);
-    }
-  };
-
-  // Elsewhere in the code...
-
-  LeadersValueListener* listener = new LeadersValueListener();
-  firebase::Future<firebase::database::DataSnapshot> result =
-    dbRef.GetReference("Leaders").AddValueListener(listener);
 	
 firebase.auth().onAuthStateChanged(firebaseUser =>{
 	console.log("TEST,",firebaseUser);
