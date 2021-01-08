@@ -94,9 +94,12 @@ firebase.auth().onAuthStateChanged(firebaseUser =>{
 			document.getElementById('humid').innerHTML= snapshot.val().humid;
 			// document.getElementById('water').innerHTML= snapshot.val().device;
 			if(snapshot.val().water==1){
-				document.getElementById('water').innerHTML= "Need Water";
-		}else{
-			document.getElementById('water').innerHTML= "No need Water";
+				document.getElementById('water').innerHTML= "Need water";
+		}else if(snapshot.val().water==2){
+			document.getElementById('water').innerHTML= "Hasn't been water yet.";
+		}
+		else{
+			document.getElementById('water').innerHTML= "No need water";
 		}
 		if(snapshot.val().device==1){
 			document.getElementById('device').innerHTML="On";
