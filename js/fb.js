@@ -75,8 +75,8 @@ turnOn = function(){
 		})
 }
 firebase.database().ref().on('value',function(snapshot){
-			document.getElementById('temp').innerHTML= "1";
-			document.getElementById('humid').innerHTML= "1";
+			// document.getElementById('temp').innerHTML= "1";
+			// document.getElementById('humid').innerHTML= "1";
 			document.getElementById('water').innerHTML= snapshot.val().water;
 		});
 firebase.auth().onAuthStateChanged(firebaseUser =>{
@@ -90,8 +90,8 @@ firebase.auth().onAuthStateChanged(firebaseUser =>{
 		console.log("12345");
 		console.log("12345");
 		firebase.database().ref().on('value',function(snapshot){
-			document.getElementById('temp').innerHTML= snapshot.val().temp;
-			document.getElementById('humid').innerHTML= snapshot.val().humid;
+			// document.getElementById('temp').innerHTML= snapshot.val().temp;
+			// document.getElementById('humid').innerHTML= snapshot.val().humid;
 			// document.getElementById('water').innerHTML= snapshot.val().device;
 			if(snapshot.val().water==1){
 				document.getElementById('water').innerHTML= "Need water";
@@ -109,9 +109,7 @@ firebase.auth().onAuthStateChanged(firebaseUser =>{
 		});
 		
 		firebase.database().ref().update({
-			tmp : "NaN",
-			humid : "NaN",
-			water: "1"
+			test: "1"
 		}, (error) => {
   if (error) {
 	  console.log("ERROR",error);
