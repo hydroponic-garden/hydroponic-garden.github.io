@@ -60,7 +60,7 @@ turnOff = function(){
 	firebase.auth().onAuthStateChanged(firebaseUser =>{
 	if(firebaseUser){
 		firebase.database().ref().update({
-			device:"0"
+			device:0
 		})
 	}
 		})
@@ -69,7 +69,7 @@ turnOn = function(){
 	firebase.auth().onAuthStateChanged(firebaseUser =>{
 	if(firebaseUser){
 		firebase.database().ref().update({
-			device:"1"
+			device:1
 		})
 	}
 		})
@@ -93,12 +93,12 @@ firebase.auth().onAuthStateChanged(firebaseUser =>{
 			document.getElementById('temp').innerHTML= snapshot.val().temp;
 			document.getElementById('humid').innerHTML= snapshot.val().humid;
 			// document.getElementById('water').innerHTML= snapshot.val().device;
-			if(snapshot.val().water=="1"){
+			if(snapshot.val().water==1){
 				document.getElementById('water').innerHTML= "Need Water";
 		}else{
 			document.getElementById('water').innerHTML= "No need Water";
 		}
-		if(snapshot.val().device=="1"){
+		if(snapshot.val().device==1){
 			document.getElementById('device').innerHTML="On";
 		}else{
 			document.getElementById('device').innerHTML="Off";
