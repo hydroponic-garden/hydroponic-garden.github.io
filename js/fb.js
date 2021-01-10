@@ -45,6 +45,14 @@ onRegister = function(){
 	if(isSuccessful){
 		document.getElementById('registerStatus').innerHTML = "";
 		document.getElementById('registerOK').innerHTML = "Đăng kí thành công";
+		firebase.auth().onAuthStateChanged(firebaseUser =>{
+		if(firebaseUser){
+			firebaseUser.updateProfile({
+				displayName: "Guest"
+			})
+		}
+			})
+			//
 	}
 	
 }
@@ -78,8 +86,9 @@ turnOn = function(){
 editTimer = function(){
 	document.getElementById('timer').disabled = false;
 }
+
 okTimer=function(){
-	if(isNaN(document.getElementById('timer').value)){
+	if(isNaN(document.getElementById('timer').value) || document.getElementById('timer').value.length < 1){
 		document.getElementById('rp').innerHTML = "You need to input a number!";
 		document.getElementById('rp_ok').innerHTML = "";
 	}
@@ -97,6 +106,28 @@ okTimer=function(){
 		
 	}
 }
+editProfile = function(){
+	if(document.getElementById('nameAccount').disabled == false){
+		if( document.getElementById('nameAccount').value.length > 1){
+			document.getElementById('nameAccount').disabled = true;
+			document.getElementById('nameAccount').placeholder = document.getElementById('nameAccount').value;
+			firebase.auth().onAuthStateChanged(firebaseUser =>{
+			if(firebaseUser){
+				firebaseUser.updateProfile({
+					displayName:document.getElementById("nameAccount").value
+				})
+			}
+				})
+		}
+		else{
+			document.getElementById('nameAccount').disabled = true;
+		}
+	}
+	else{
+		document.getElementById('nameAccount').disabled = false;
+	}
+}
+
 firebase.database().ref().on('value',function(snapshot){
 			// document.getElementById('temp').innerHTML= "1";
 			// document.getElementById('humid').innerHTML= "1";
@@ -106,9 +137,10 @@ firebase.auth().onAuthStateChanged(firebaseUser =>{
 	console.log("TEST,",firebaseUser);
 	if(firebaseUser){
 		var user = firebase.auth().currentUser;
-		document.getElementById('nameAccount').innerHTML.replace(document.getElementById("nameAccount").placeholder,user.displayName);
-		console.log(user.email);
-		document.getElementById('emailAccount').innerHTML= user.email;
+		//document.getElementById('nameAccount').innerHTML.replace(document.getElementById("nameAccount").placeholder,user.displayName);
+		//console.log(user.email);
+		document.getElementById('nameAccount').placeholder=user.displayName;
+		document.getElementById('emailAccount').placeholder=user.email;
 		
 		console.log("12345");
 		console.log("12345");

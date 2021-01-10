@@ -112,7 +112,8 @@
 					  <p id="rp_ok" style="color:green; text-align:center"></p>
 					  <p id="rp" style="color:red; text-align:center"></p>
 					  <input class="title" id="timer" style="text-align:center;color:red;width:50%" placeholder="min"></input>
-					  <button onclick="editTimer()">Edit</button><button onclick="okTimer()">OK</button>
+					  <button class="button is-warning is-light" onclick="editTimer()">Edit</button>
+					  <button class="button is-success is-light" onclick="okTimer()">OK</button>
 					</div>
 				  </div>
 				  <div class="has-text-centered">
@@ -145,23 +146,24 @@
 				Account
 			  </p>
 			  <form style="padding:1em">
-				  <fieldset disabled>
+				  
   
 					<div class="field">
 					  <label class="label">Name</label>
 					  <div class="control">
-						<input class="input" type="text" id="nameAccount" placeholder="username">
+						<input class="input" type="text" id="nameAccount" placeholder="username" disabled>
+						<button style="margin:1px" class="button is-warning is-light" onclick="editProfile(); return false;" >Edit</button>
 					  </div>
 					</div>
 
 					<div class="field">
 					  <label class="label">Email</label>
 					  <div class="control">
-						<input class="input" type="email" id="emailAccount" placeholder="pq.dai225@gmail.com">
+						<input class="input" type="email" id="emailAccount" placeholder="pq.dai225@gmail.com" disabled>
 					  </div>
 					</div>
 
-					</fieldset>
+					
 					</form>
 				  <div class ="panel-block is-flex is-justify-content-center" style="border-top:0.1px solid #0000000f; margin-top:0.5em; justify-content:center">
 					<div class="buttons">
