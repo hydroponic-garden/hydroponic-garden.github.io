@@ -74,6 +74,29 @@ turnOn = function(){
 	}
 		})
 }
+
+editTimer = function(){
+	document.getElementById('timer').disabled = false;
+}
+okTimer=function(){
+	if(isNaN(document.getElementById('timer').value)){
+		document.getElementById('rp').innerHTML = "You need to input a number!";
+		document.getElementById('rp_ok').innerHTML = "";
+	}
+	else{
+		document.getElementById('timer').disabled = true;
+		document.getElementById('rp').innerHTML = "";
+		document.getElementById('rp_ok').innerHTML = "Time has been set!";
+		firebase.auth().onAuthStateChanged(firebaseUser =>{
+		if(firebaseUser){
+			firebase.database().ref().update({
+				timer:document.getElementById('timer').value
+			})
+		}
+			})
+		
+	}
+}
 firebase.database().ref().on('value',function(snapshot){
 			// document.getElementById('temp').innerHTML= "1";
 			// document.getElementById('humid').innerHTML= "1";
